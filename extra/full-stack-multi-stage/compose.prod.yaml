@@ -1,0 +1,12 @@
+services:
+
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: php-prod
+      args:
+        - SYMFONY_VERSION=7.0
+    networks:
+      - stack

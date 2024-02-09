@@ -1,0 +1,28 @@
+services:
+
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: php-dev
+      args:
+        - SYMFONY_VERSION=7.0
+    environment:
+      XDEBUG_CONFIG: "mode=debug client_host=host.docker.internal client_port=9003 start_with_request=yes"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    volumes:
+      - ./project:/var/www/html
+      - ./project/var:/var/www/html/var:delegated
+      - ./project/cache:/var/www/html/cache:delegated
+      - ./project/vendor:/var/www/html/vendor:cache
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:delegated
+      - ./docker/php/.php-cs-fixer.php:/var/www/html/.php-cs-fixer.php
+      - ./docker/php/.phpcs.xml:/var/www/html/.phpcs.xml
+    depends_on:
+      db:
+        condition: service_started
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - stack

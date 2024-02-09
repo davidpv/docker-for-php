@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="My PHP Coding Standard">
+
+    <!-- Basic Setup -->
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="encoding" value="utf-8"/>
+    <arg name="tab-width" value="4"/>
+
+    <!-- Ignore warnings, only fix errors -->
+    <arg name="warning-severity" value="0"/>
+
+    <!-- Specify Files and Directories to Check -->
+    <file>./</file>
+    <exclude-pattern>vendor</exclude-pattern>
+
+    <!-- Coding Standards -->
+    <rule ref="PSR2"/>
+
+    <!-- Additional Rules or Overrides -->
+
+</ruleset>

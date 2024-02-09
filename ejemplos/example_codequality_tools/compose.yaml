@@ -1,0 +1,13 @@
+services:
+
+  php:
+    platform: linux/arm64/v8
+    build:
+      dockerfile: ./docker/Dockerfile
+    image: codequality:dev
+    ports:
+      - "80:80"
+    environment:
+      APP_ENV: development
+    volumes:
+      - .:/app

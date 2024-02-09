@@ -1,0 +1,4 @@
+FROM php:8.3-cli
+COPY benchmark.php /usr/src/myapp/
+WORKDIR /usr/src/myapp
+CMD [ "php", "./benchmark.php" ]
